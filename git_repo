@@ -1,0 +1,102 @@
+#!/bin/bash
+
+CMD=$0
+ACTION=$1
+
+GITHUB_REPOS="https://github.com/gozfree/libraries.git \
+	      https://github.com/gozfree/rpcd.git \
+	      https://github.com/gozfree/ipcam.git \
+	      https://github.com/gozfree/filewatcher.git \
+	      https://github.com/gozfree/vimrc.git \
+	      https://github.com/gozfree/sktool.git \
+	      https://github.com/gozfree/rasberrypi.git \
+	      "
+TOP_DIR=`pwd`
+
+git_clone()
+{
+	for item in $GITHUB_REPOS; do
+		echo "git clone $item"
+		git clone $item
+		case "$?" in
+		0) echo "success.";;
+		*) echo "failed.";;
+		esac
+	done
+}
+
+git_pull()
+{
+	for item in $GITHUB_REPOS; do
+		echo "git pull $item"
+		git pull $item;
+		case "$?" in
+		0) echo "success.";;
+		*) echo "failed.";;
+		esac
+	done
+}
+
+git_status()
+{
+	for item in $GITHUB_REPOS; do
+		name=`echo $item | awk -F/ '{print $5}' | awk -F. '{print $1}'`
+		item_dir=$TOP_DIR/$name
+		echo "git status $item"
+		if [ -d $item_dir ]; then
+			cd $item_dir
+			git status $item;
+			case "$?" in
+			0) echo "success.";;
+			*) echo "failed.";;
+			esac
+			cd ${TOP_DIR}
+		else
+			echo "$item_dir does not exist"
+		fi
+	done
+}
+
+git_push()
+{
+	for item in $GITHUB_REPOS; do
+		name=`echo $item | awk -F/ '{print $5}' | awk -F. '{print $1}'`
+		item_dir=$TOP_DIR/$name
+		echo "git push $item"
+		if [ -d $item_dir ]; then
+			cd $item_dir
+			git push $item;
+			case "$?" in
+			0) echo "success.";;
+			*) echo "failed.";;
+			esac
+			cd ${TOP_DIR}
+		else
+			echo "$item_dir does not exist"
+		fi
+	done
+}
+
+usage()
+{
+	echo "repo gozfree github"
+}
+
+main()
+{
+	case $ACTION in
+	"clone")
+		git_clone;;
+	"pull")
+		git_pull;;
+	"status")
+		git_status;;
+	"push")
+		git_push;;
+	*)
+		usage;
+		exit;;
+	esac
+}
+
+main
