@@ -28,12 +28,20 @@ git_clone()
 git_pull()
 {
 	for item in $GITHUB_REPOS; do
-		echo "git pull $item"
-		git pull $item;
-		case "$?" in
-		0) echo "success.";;
-		*) echo "failed.";;
-		esac
+		name=`echo $item | awk -F/ '{print $5}' | awk -F. '{print $1}'`
+		item_dir=$TOP_DIR/$name
+		echo "git status $item"
+		if [ -d $item_dir ]; then
+			cd $item_dir
+			git pull $item;
+			case "$?" in
+			0) echo "success.";;
+			*) echo "failed.";;
+			esac
+			cd ${TOP_DIR}
+		else
+			echo "$item_dir does not exist"
+		fi
 	done
 }
 
