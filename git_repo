@@ -10,6 +10,7 @@ GITHUB_REPOS="https://github.com/gozfree/libraries.git \
 	      https://github.com/gozfree/vimrc.git \
 	      https://github.com/gozfree/sktool.git \
 	      https://github.com/gozfree/rasberrypi.git \
+	      https://github.com/gozfree/useful_scripts.git \
 	      "
 TOP_DIR=`pwd`
 
@@ -30,7 +31,7 @@ git_pull()
 	for item in $GITHUB_REPOS; do
 		name=`echo $item | awk -F/ '{print $5}' | awk -F. '{print $1}'`
 		item_dir=$TOP_DIR/$name
-		echo "git status $item"
+		echo "git pull $item"
 		if [ -d $item_dir ]; then
 			cd $item_dir
 			git pull $item;
