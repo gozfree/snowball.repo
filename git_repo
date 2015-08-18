@@ -86,6 +86,22 @@ git_push()
 	done
 }
 
+git_log()
+{
+	for item in $GITHUB_REPOS; do
+		name=`echo $item | awk -F/ '{print $5}' | awk -F. '{print $1}'`
+		item_dir=$TOP_DIR/$name
+		echo "git log $item"
+		if [ -d $item_dir ]; then
+			cd $item_dir
+			git lg;
+			cd ${TOP_DIR}
+		else
+			echo "$item_dir does not exist"
+		fi
+	done
+}
+
 usage()
 {
 	echo "repo gozfree github"
@@ -102,6 +118,8 @@ main()
 		git_status;;
 	"push")
 		git_push;;
+	"log")
+		git_log;;
 	*)
 		usage;
 		exit;;
