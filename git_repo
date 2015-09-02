@@ -34,7 +34,7 @@ git_pull()
 		echo "git pull $item"
 		if [ -d $item_dir ]; then
 			cd $item_dir
-			git pull $item;
+			git pull
 			case "$?" in
 			0) echo "success.";;
 			*) echo "failed.";;
@@ -54,7 +54,7 @@ git_status()
 		echo "git status $item"
 		if [ -d $item_dir ]; then
 			cd $item_dir
-			git status $item;
+			git status
 			case "$?" in
 			0) echo "success.";;
 			*) echo "failed.";;
@@ -74,7 +74,7 @@ git_push()
 		echo "git push $item"
 		if [ -d $item_dir ]; then
 			cd $item_dir
-			git push $item;
+			git push
 			case "$?" in
 			0) echo "success.";;
 			*) echo "failed.";;
