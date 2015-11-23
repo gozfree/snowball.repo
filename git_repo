@@ -4,6 +4,7 @@ CMD=$0
 ACTION=$1
 
 GITHUB_REPOS="https://github.com/gozfree/libraries.git \
+	      https://github.com/gozfree/ipcd.git \
 	      https://github.com/gozfree/rpcd.git \
 	      https://github.com/gozfree/ipcam.git \
 	      https://github.com/gozfree/filewatcher.git \
