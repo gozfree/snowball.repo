@@ -6,12 +6,11 @@ ACTION=$1
 GITHUB_REPOS="https://github.com/gozfree/libraries.git \
 	      https://github.com/gozfree/ipcd.git \
 	      https://github.com/gozfree/rpcd.git \
-	      https://github.com/gozfree/ipcam.git \
+	      https://github.com/gozfree/collie.git \
 	      https://github.com/gozfree/filewatcher.git \
 	      https://github.com/gozfree/vimrc.git \
 	      https://github.com/gozfree/sktool.git \
-	      https://github.com/gozfree/rasberrypi.git \
-	      https://github.com/gozfree/useful_scripts.git \
+	      https://github.com/gozfree/raspberrypi.git \
 	      "
 TOP_DIR=`pwd`
 
