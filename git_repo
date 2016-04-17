@@ -3,14 +3,15 @@
 CMD=$0
 ACTION=$1
 
-GITHUB_REPOS="https://github.com/gozfree/libraries.git \
-	      https://github.com/gozfree/ipcd.git \
-	      https://github.com/gozfree/rpcd.git \
-	      https://github.com/gozfree/collie.git \
+GITHUB_REPOS="https://github.com/gozfree/aquila.git\
+	      https://github.com/gozfree/build.git \
 	      https://github.com/gozfree/filewatcher.git \
-	      https://github.com/gozfree/vimrc.git \
-	      https://github.com/gozfree/sktool.git \
+	      https://github.com/gozfree/ipcd.git \
+	      https://github.com/gozfree/libraries.git \
 	      https://github.com/gozfree/raspberrypi.git \
+	      https://github.com/gozfree/rpcd.git \
+	      https://github.com/gozfree/sktool.git \
+	      https://github.com/gozfree/vimrc.git \
 	      "
 TOP_DIR=`pwd`
 
@@ -105,6 +106,10 @@ git_log()
 usage()
 {
 	echo "repo gozfree github"
+	echo "./git_repo <clone|pull|status|push|log|help>"
+	for item in $GITHUB_REPOS; do
+		echo "$item"
+	done
 }
 
 main()
@@ -120,10 +125,13 @@ main()
 		git_push;;
 	"log")
 		git_log;;
+        "help")
+            usage;;
 	*)
 		usage;
 		exit;;
 	esac
 }
+
 
 main
