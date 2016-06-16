@@ -1,0 +1,45 @@
+
+## build compile standardlized
+1. basic liblog source code
+$ tree
+.
+├── color.h
+├── liblog.c
+├── liblog.h
+├── README.md
+└── test_liblog.c
+
+2. gen configure.ac
+$ autoscan
+$ mv configure.scan configure.ac
+modify configure.ac
+
+3. gen configure
+$ touch NEWS README AUTHORS ChangeLog
+edit Makefile.am
+$ autoreconf -i
+
+4. gen Makefile & make
+$ ./configure
+$ make
+
+
+## package debian standardlized
+1. gen liblog_1.0.0.orig.tar.xz
+tar -cvf liblog_1.0.0.orig.tar liblog
+xz -z liblog_1.0.0.orig.tar
+
+2. add debian folder&files into liblog
+
+3. gen deb package
+$ dpkg-buildpackage
+
+$ sudo dpkg -i liblog_1.0.0_amd64.deb
+$ dpkg -L liblog
+
+HOWTO PPA
+http://neilsh.me/2016/01/20/debian-packaging-step-by-step/
+
+build for upload
+debuild -S -k0AF0F90C
+
