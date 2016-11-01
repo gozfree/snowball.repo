@@ -5,13 +5,17 @@ ACTION=$1
 
 GITHUB_REPOS="https://github.com/gozfree/aquila.git\
 	      https://github.com/gozfree/build.git \
+	      https://github.com/gozfree/echod.git \
 	      https://github.com/gozfree/filewatcher.git \
+	      https://github.com/gozfree/init.git \
 	      https://github.com/gozfree/ipcd.git \
+	      https://github.com/gozfree/liblock.git \
+	      https://github.com/gozfree/liblog.git \
+	      https://github.com/gozfree/libmacro.git \
 	      https://github.com/gozfree/libraries.git \
 	      https://github.com/gozfree/raspberrypi.git \
 	      https://github.com/gozfree/rpcd.git \
 	      https://github.com/gozfree/sktool.git \
-	      https://github.com/gozfree/vimrc.git \
 	      "
 TOP_DIR=`pwd`
 
